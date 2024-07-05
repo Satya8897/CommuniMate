@@ -31,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static final List<Widget> _widgetOptions = <Widget>[
     ContactList(),
     UpdatesScreen(),
-    GroupsPage(), // Corrected placement
+    GroupsPage(),
     CallList(),
   ];
 
@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 62, 194, 62),
+        backgroundColor: Color.fromARGB(255, 213, 87, 238),
         title: Text('CommuniMate'),
         actions: <Widget>[
           IconButton(
@@ -102,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 backgroundImage: AssetImage('lib/assets/images/Satya.jpeg'), // Replace with actual avatar image
               ),
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 142, 239, 109),
+                color: Color.fromARGB(255, 230, 64, 207),
               ),
               onDetailsPressed: () {
                 Navigator.push(
@@ -111,8 +111,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     builder: (context) => UserDetailsPage(
                       name: 'Satya Sai',
                       email: 'satyasai@gmail.com',
-                      phoneNumber: '123-456-7890',
-                      address: '123 Main St, City, Country',
+                      phoneNumber: '8897117477',
+                      address: 'Vijayawada Labbipet',
                     ),
                   ),
                 );
@@ -121,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               leading: Icon(
                 Icons.person,
-                color: Color.fromARGB(255, 49, 221, 64),
+                color: Color.fromARGB(255, 201, 49, 221),
               ),
               title: Text('My account'),
               onTap: () {
@@ -153,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
             end: Alignment.bottomCenter,
             colors: [
               Color.fromARGB(255, 247, 252, 245), // Light green background color
-              Color.fromARGB(255, 247, 252, 245), // Light green accent color
+              Color.fromARGB(255, 243, 167, 237), // Light green accent color
             ],
             stops: [0.4, 1.0],
           ),
@@ -163,10 +163,10 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromARGB(255, 9, 240, 9),
+        backgroundColor: Color.fromARGB(255, 226, 63, 213),
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Color.fromARGB(255, 244, 248, 244),
-        unselectedItemColor: Color.fromARGB(255, 248, 248, 248),
+        selectedItemColor: Color.fromARGB(255, 243, 167, 237),
+        unselectedItemColor: Color.fromARGB(255, 248, 248, 246),
         selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
         unselectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
         items: [
@@ -212,7 +212,7 @@ class UserDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 62, 194, 62),
+        backgroundColor: Color.fromARGB(255, 206, 87, 190),
         title: Text('User Details'),
       ),
       body: Padding(
@@ -286,8 +286,56 @@ class ContactList extends StatelessWidget {
           ),
           title: Text(contactName),
           subtitle: Text('Online'),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ContactDetailsPage(
+                  contactName: contactName,
+                  contactImage: contact['image']!,
+                ),
+              ),
+            );
+          },
         );
       },
+    );
+  }
+}
+
+class ContactDetailsPage extends StatelessWidget {
+  final String contactName;
+  final String contactImage;
+
+  const ContactDetailsPage({
+    Key? key,
+    required this.contactName,
+    required this.contactImage,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 206, 87, 190),
+        title: Text('Contact Details'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircleAvatar(
+              backgroundImage: AssetImage(contactImage),
+              radius: 50,
+            ),
+            SizedBox(height: 20),
+            Text(
+              contactName,
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -329,28 +377,39 @@ class ContactSearchDelegate extends SearchDelegate<String> {
 class CallList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, String>> contacts = [
+      {'name': 'Boyapati Sreenu', 'image': 'lib/assets/images/download (8).jpeg'},
+      {'name': 'Sardhar valabhai patel', 'image': 'lib/assets/images/download (1).jpeg'},
+      {'name': 'magal damodar', 'image': 'lib/assets/images/download (2).jpeg'},
+      {'name': 'Bhagat Singh', 'image': 'lib/assets/images/download (3).jpeg'},
+      {'name': 'Gandhi ', 'image': 'lib/assets/images/download (4).jpeg'},
+      {'name': 'Bose Babai', 'image': 'lib/assets/images/download (5).jpeg'},
+    
+    ];
+
     return ListView.builder(
-      itemCount: 10,
+      itemCount: contacts.length,
       itemBuilder: (context, index) {
+        final contact = contacts[index];
         return ListTile(
           leading: CircleAvatar(
-            backgroundImage: AssetImage('lib/assets/images/Satya.jpeg'),
+            backgroundImage: AssetImage(contact['image']!),
           ),
-          title: Text('Call $index'),
+          title: Text(contact['name']!),
           subtitle: Text('Yesterday, 9:00 AM'),
-          trailing: Icon(Icons.call, color: Color.fromARGB(255, 4, 228, 8)),
+          trailing: Icon(Icons.call, color: Color.fromARGB(255, 228, 4, 198)),
         );
       },
     );
   }
 }
 
+
 class GroupsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Map<String, List<Map<String, String>>> groups = {
       'Freedom fighters': [
-        
         {'name': 'Bhagat Singh', 'image': 'lib/assets/images/download (3).jpeg'},
         {'name': 'Gandhi', 'image': 'lib/assets/images/download (4).jpeg'},
         {'name': 'Bose Babai', 'image': 'lib/assets/images/download (5).jpeg'},
@@ -369,14 +428,34 @@ class GroupsPage extends StatelessWidget {
 
     return ListView(
       children: groups.keys.map((groupName) {
+        final firstMemberImage = groups[groupName]!.first['image'];
         return ExpansionTile(
-          title: Text(groupName),
+          title: Row(
+            children: [
+              CircleAvatar(
+                backgroundImage: AssetImage(firstMemberImage!),
+              ),
+              SizedBox(width: 8),
+              Text(groupName),
+            ],
+          ),
           children: groups[groupName]!.map((contact) {
             return ListTile(
               leading: CircleAvatar(
                 backgroundImage: AssetImage(contact['image']!),
               ),
               title: Text(contact['name']!),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ContactDetailsPage(
+                      contactName: contact['name']!,
+                      contactImage: contact['image']!,
+                    ),
+                  ),
+                );
+              },
             );
           }).toList(),
         );
@@ -384,6 +463,8 @@ class GroupsPage extends StatelessWidget {
     );
   }
 }
+
+
 class UpdatesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
