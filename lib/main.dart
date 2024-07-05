@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 213, 87, 238),
+        backgroundColor: Color.fromARGB(255, 74, 226, 231),
         title: Text('CommuniMate'),
         actions: <Widget>[
           IconButton(
@@ -102,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 backgroundImage: AssetImage('lib/assets/images/Satya.jpeg'), // Replace with actual avatar image
               ),
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 230, 64, 207),
+                color: Color.fromARGB(255, 74, 226, 231),
               ),
               onDetailsPressed: () {
                 Navigator.push(
@@ -121,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               leading: Icon(
                 Icons.person,
-                color: Color.fromARGB(255, 201, 49, 221),
+                color: Color.fromARGB(255, 74, 226, 231),
               ),
               title: Text('My account'),
               onTap: () {
@@ -145,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      backgroundColor: Color.fromARGB(255, 247, 252, 245),
+      backgroundColor: Color.fromARGB(255, 91, 245, 30),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -153,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
             end: Alignment.bottomCenter,
             colors: [
               Color.fromARGB(255, 247, 252, 245), // Light green background color
-              Color.fromARGB(255, 243, 167, 237), // Light green accent color
+              Color.fromARGB(255, 137, 233, 236), // Light green accent color
             ],
             stops: [0.4, 1.0],
           ),
@@ -163,9 +163,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromARGB(255, 226, 63, 213),
+        backgroundColor: Color.fromARGB(255, 7, 232, 240),
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Color.fromARGB(255, 243, 167, 237),
+        selectedItemColor: Color.fromARGB(255, 17, 113, 238),
         unselectedItemColor: Color.fromARGB(255, 248, 248, 246),
         selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
         unselectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
@@ -212,7 +212,7 @@ class UserDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 206, 87, 190),
+        backgroundColor: Color.fromARGB(255, 74, 226, 231),
         title: Text('User Details'),
       ),
       body: Padding(
@@ -317,7 +317,7 @@ class ContactDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 206, 87, 190),
+        backgroundColor: Color.fromARGB(255, 74, 226, 231),
         title: Text('Contact Details'),
       ),
       body: Center(
@@ -397,7 +397,7 @@ class CallList extends StatelessWidget {
           ),
           title: Text(contact['name']!),
           subtitle: Text('Yesterday, 9:00 AM'),
-          trailing: Icon(Icons.call, color: Color.fromARGB(255, 228, 4, 198)),
+          trailing: Icon(Icons.call, color: Color.fromARGB(255, 74, 226, 231)),
         );
       },
     );
