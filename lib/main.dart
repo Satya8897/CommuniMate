@@ -491,7 +491,7 @@ class UpdatesScreen extends StatelessWidget {
           title: Text('magal damodar'),
           subtitle: Text('Status update'),
         ),
-        // Add more ListTile widgets as needed
+        // Add more ListTile widgets as need
       ],
     );
   }
